@@ -8,7 +8,11 @@ description_en: "Personal academic portfolio of Satria — researcher in GIS, re
 description_id: "Portofolio akademik Satria — peneliti SIG, penginderaan jauh, dan pengurangan risiko bencana di Indonesia."
 
 # Replace with your actual GitHub username
+<<<<<<< HEAD
 url: "https:/mygisportal.github.io"
+=======
+url: "https://yourusername.github.io"
+>>>>>>> 463cfe654ecf575ee1cabc33c99d5136de736ed7
 baseurl: ""
 
 # =====================================================
@@ -31,11 +35,19 @@ author:
 # SOCIAL LINKS — leave empty string "" to hide
 # =====================================================
 social:
+<<<<<<< HEAD
   github: "mygisportal"
   scholar: "https://scholar.google.com/citations?user=YOUR_ID"
   orcid: "0000-0000-0000-0000"
   researchgate: "Your-Name"
   linkedin: "mygisportal"
+=======
+  github: "yourusername"
+  scholar: "https://scholar.google.com/citations?user=YOUR_ID"
+  orcid: "0000-0000-0000-0000"
+  researchgate: "Your-Name"
+  linkedin: "yourusername"
+>>>>>>> 463cfe654ecf575ee1cabc33c99d5136de736ed7
   twitter: ""
   instagram: ""
 
