@@ -1,0 +1,98 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d3b66">
+
+  {%- assign lang = page.lang | default: site.default_lang -%}
+  {%- assign t = site.data.i18n[lang] -%}
+
+  {%- if page.title -%}
+    <title>{{ page.title }} · {{ site.author.name }}</title>
+  {%- else -%}
+    <title>{{ site.title }}</title>
+  {%- endif -%}
+
+  {%- assign desc = page.description | default: site.description_en -%}
+  {%- if lang == 'id' and page.description == nil -%}{%- assign desc = site.description_id -%}{%- endif -%}
+  <meta name="description" content="{{ desc | strip_html | normalize_whitespace | truncate: 160 }}">
+  <meta name="author" content="{{ site.author.full_name }}">
+
+  <!-- Canonical & alternates -->
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  {%- if page.url contains '/id/' -%}
+    <link rel="alternate" hreflang="id" href="{{ page.url | absolute_url }}">
+    <link rel="alternate" hreflang="en" href="{{ page.url | replace: '/id/', '/' | absolute_url }}">
+  {%- else -%}
+    <link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}">
+    <link rel="alternate" hreflang="id" href="{{ page.url | prepend: '/id' | absolute_url }}">
+  {%- endif -%}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ desc | strip_html | normalize_whitespace | truncate: 160 }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.author.full_name }}">
+  <meta property="og:image" content="{{ page.image | default: '/assets/images/og-default.png' | absolute_url }}">
+  <meta property="og:locale" content="{% if lang == 'id' %}id_ID{% else %}en_US{% endif %}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ desc | strip_html | normalize_whitespace | truncate: 160 }}">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+  <link rel="alternate icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+
+  <!-- Preconnect to font CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: Lora (display serif, Tufte-inspired), Inter (UI/body), JetBrains Mono (code) -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind via CDN with custom config (compiled output also supported) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="{{ '/assets/js/tailwind-config.js' | relative_url }}"></script>
+
+  <!-- Custom stylesheet (Tufte-inspired refinements + tokens) -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <!-- Theme init (prevent FOUC) — run before paint -->
+  <script>
+    (function() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored || (prefersDark ? 'dark' : 'light');
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <!-- JSON-LD: Person schema for SEO -->
+  {%- if page.url == '/' or page.url == '/id/' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.author.full_name }}",
+    "url": "{{ site.url }}",
+    "image": "{{ site.author.avatar | absolute_url }}",
+    "jobTitle": "{{ site.author.title_en }}",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "{{ site.author.affiliation_en }}"
+    },
+    "sameAs": [
+      "https://github.com/{{ site.social.github }}",
+      "{{ site.social.scholar }}",
+      "https://orcid.org/{{ site.social.orcid }}",
+      "https://linkedin.com/in/{{ site.social.linkedin }}"
+    ]
+  }
+  </script>
+  {%- endif -%}
+</head>

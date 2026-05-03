@@ -1,0 +1,425 @@
+---
+# Front matter so Jekyll processes this file (allows liquid if needed)
+---
+
+/* =====================================================
+ * Global Tufte-inspired refinements layered over Tailwind
+ * ===================================================== */
+
+:root {
+  --rule: rgba(0, 0, 0, 0.10);
+  --rule-strong: rgba(0, 0, 0, 0.20);
+  --ocean: #0d3b66;
+  --forest: #234a28;
+  --paper: #fdfaf3;
+  --ink: #111111;
+}
+
+html.dark {
+  --rule: rgba(255, 255, 255, 0.10);
+  --rule-strong: rgba(255, 255, 255, 0.20);
+  --paper: #0e1116;
+  --ink: #e8e6e1;
+}
+
+html.dark body {
+  background: #0e1116;
+  color: #e8e6e1;
+}
+
+html.dark .bg-paper { background-color: #0e1116 !important; }
+html.dark .text-ink { color: #e8e6e1 !important; }
+
+/* Smooth, subtle scroll behavior */
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+/* Body baseline — Tufte's careful body typography */
+body {
+  font-feature-settings: "kern", "liga", "onum";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================================
+ * Tufte-inspired type system
+ * Display headings use Lora (serif); UI uses Inter (sans)
+ * ===================================================== */
+
+.font-display { font-family: 'Lora', Georgia, serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.011em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+html.dark h1, html.dark h2, html.dark h3,
+html.dark h4, html.dark h5, html.dark h6 { color: #e8e6e1; }
+
+/* Section rules — Tufte-style hairline dividers */
+.tufte-rule {
+  border: 0;
+  height: 1px;
+  background: var(--rule);
+  margin: 3rem 0;
+}
+
+.tufte-rule-strong {
+  border: 0;
+  height: 1px;
+  background: var(--rule-strong);
+  margin: 3rem 0;
+}
+
+/* =====================================================
+ * Prose — for blog posts, project descriptions
+ * Optimised for reading at ~65ch
+ * ===================================================== */
+
+.prose-tufte {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.0625rem;       /* 17px */
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 38rem;
+}
+
+.prose-tufte p {
+  margin-block: 1.25em;
+}
+
+.prose-tufte p + p {
+  text-indent: 1.5em;          /* Tufte: indent runs of paragraphs */
+  margin-top: 0;
+}
+
+.prose-tufte > h2 {
+  font-size: 1.75rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.prose-tufte > h3 {
+  font-size: 1.25rem;
+  margin-top: 2em;
+  margin-bottom: 0.4em;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.prose-tufte a {
+  color: var(--ocean);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(13, 59, 102, 0.35);
+  transition: text-decoration-color 0.15s;
+}
+
+.prose-tufte a:hover {
+  text-decoration-color: var(--ocean);
+}
+
+html.dark .prose-tufte { color: #e8e6e1; }
+html.dark .prose-tufte a { color: #7aaac9; text-decoration-color: rgba(122, 170, 201, 0.4); }
+
+.prose-tufte blockquote {
+  font-style: italic;
+  border-left: 2px solid var(--ocean);
+  padding-left: 1.25em;
+  color: #444;
+  margin: 1.5em 0;
+}
+
+html.dark .prose-tufte blockquote { color: #b8b6b2; border-color: #7aaac9; }
+
+.prose-tufte code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+  background: rgba(13, 59, 102, 0.06);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+}
+
+html.dark .prose-tufte code { background: rgba(122, 170, 201, 0.12); }
+
+.prose-tufte pre {
+  background: #f6f1e4;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1em 1.25em;
+  font-size: 0.875em;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+html.dark .prose-tufte pre { background: #161a21; }
+
+.prose-tufte pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.prose-tufte img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 1.5em 0;
+}
+
+.prose-tufte figcaption {
+  font-size: 0.85em;
+  color: #6b6b6b;
+  text-align: center;
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+.prose-tufte ul, .prose-tufte ol {
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+
+.prose-tufte li { margin: 0.4em 0; }
+
+.prose-tufte table {
+  width: 100%;
+  font-size: 0.95em;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.prose-tufte th, .prose-tufte td {
+  text-align: left;
+  padding: 0.6em 0.8em;
+  border-bottom: 1px solid var(--rule);
+}
+
+.prose-tufte th {
+  border-bottom: 2px solid var(--ink);
+  font-weight: 600;
+}
+
+/* Margin/side notes — Tufte signature feature */
+.sidenote {
+  float: right;
+  clear: right;
+  margin-right: -38%;
+  width: 32%;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #555;
+  font-style: italic;
+}
+
+@media (max-width: 1100px) {
+  .sidenote {
+    float: none;
+    margin: 1em 0;
+    width: 100%;
+    border-left: 2px solid var(--ocean);
+    padding-left: 1em;
+  }
+}
+
+/* =====================================================
+ * Component classes
+ * ===================================================== */
+
+.border-rule { border-color: var(--rule); }
+
+/* Footer icon button */
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  color: var(--ink);
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+
+.footer-icon:hover {
+  opacity: 1;
+  color: var(--ocean);
+  border-color: var(--ocean);
+}
+
+html.dark .footer-icon { color: #e8e6e1; }
+html.dark .footer-icon:hover { color: #7aaac9; border-color: #7aaac9; }
+
+/* Card — restrained, paper-like surface */
+.card-paper {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card-paper:hover {
+  border-color: var(--ocean);
+}
+
+html.dark .card-paper { background: #161a21; }
+
+/* Pill / tag */
+.tag-pill {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: #555;
+  background: rgba(13, 59, 102, 0.04);
+}
+
+html.dark .tag-pill { color: #b8b6b2; background: rgba(122, 170, 201, 0.08); }
+
+.tag-pill.is-ocean   { color: var(--ocean);  border-color: rgba(13, 59, 102, 0.25); }
+.tag-pill.is-forest  { color: var(--forest); border-color: rgba(35, 74, 40, 0.25); }
+.tag-pill.is-earth   { color: #956d2c;       border-color: rgba(149, 109, 44, 0.25); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--ocean);
+  color: var(--paper);
+}
+.btn-primary:hover { background: #0a2e50; transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule);
+}
+.btn-ghost:hover { border-color: var(--ocean); color: var(--ocean); }
+
+html.dark .btn-ghost { color: #e8e6e1; }
+html.dark .btn-ghost:hover { color: #7aaac9; border-color: #7aaac9; }
+
+/* =====================================================
+ * Hero — homepage signature element
+ * ===================================================== */
+
+.hero-grid {
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: -1px -1px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 80%);
+}
+
+/* Drop cap — first letter treatment for editorial feel */
+.drop-cap::first-letter {
+  font-family: 'Lora', serif;
+  font-size: 3.4em;
+  float: left;
+  line-height: 0.85;
+  margin: 0.05em 0.1em 0 0;
+  font-weight: 600;
+  color: var(--ocean);
+}
+
+/* Number callouts (Tufte-style) */
+.numeral {
+  font-family: 'Lora', serif;
+  font-feature-settings: "onum";
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* =====================================================
+ * Reveal-on-scroll animation
+ * ===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* =====================================================
+ * Leaflet override — match academic palette
+ * ===================================================== */
+
+.leaflet-container {
+  font-family: 'Inter', sans-serif !important;
+  background: var(--paper) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.10) !important;
+}
+
+.leaflet-popup-content { font-size: 0.875rem; line-height: 1.5; }
+
+html.dark .leaflet-tile { filter: brightness(0.85) saturate(0.85); }
+
+/* =====================================================
+ * Code highlighting (rouge default mapped to muted palette)
+ * ===================================================== */
+
+.highlight { background: #f6f1e4; border-radius: 4px; }
+html.dark .highlight { background: #161a21; }
+
+/* =====================================================
+ * Selection
+ * ===================================================== */
+
+::selection {
+  background: rgba(168, 200, 221, 0.55);
+  color: var(--ink);
+}
+
+html.dark ::selection {
+  background: rgba(13, 59, 102, 0.6);
+  color: #fff;
+}
+
+/* =====================================================
+ * Print — academic CV friendly
+ * ===================================================== */
+
+@media print {
+  header, footer, #mobile-menu, #theme-toggle, #mobile-toggle { display: none !important; }
+  body { background: white; color: black; }
+  a { color: black; text-decoration: underline; }
+}

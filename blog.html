@@ -1,0 +1,67 @@
+---
+layout: page
+title: "Insights & Notes"
+eyebrow: "Journal"
+subtitle: "Short writings on geospatial workflows, remote sensing techniques, disaster preparedness, and the occasional cartographic curiosity."
+permalink: /blog/
+lang: en
+---
+
+{%- assign t = site.data.i18n.en -%}
+{%- assign posts = site.posts | where_exp: "p", "p.lang == 'en' or p.lang == nil" -%}
+
+<!-- Search bar -->
+<div class="mb-8 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+  <div class="relative flex-grow w-full sm:max-w-md">
+    <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+    <input id="blog-search" type="search" placeholder="{{ t.label_search }}" class="w-full pl-10 pr-4 py-2.5 text-sm border border-rule rounded bg-paper dark:bg-night-soft focus:outline-none focus:border-ocean-700 transition" />
+  </div>
+  <a href="{{ '/feed.xml' | relative_url }}" class="text-xs font-mono uppercase tracking-widest text-muted hover:text-ocean-700 dark:hover:text-ocean-300 inline-flex items-center gap-1.5">
+    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3.429 5.1v3.943c5.484 0 9.927 4.443 9.927 9.927h3.943c0-7.671-6.199-13.87-13.87-13.87zm0 7.984v3.943a2 2 0 012 2H9.43c0-3.286-2.657-5.943-5.999-5.943zM3.429 19a2 2 0 100 4 2 2 0 000-4z"/></svg>
+    Subscribe via RSS
+  </a>
+</div>
+
+<!-- Category pills -->
+{%- assign all_cats = posts | map: "categories" | uniq | join: "," | split: "," | uniq -%}
+<div class="mb-12 flex flex-wrap gap-2">
+  <a href="/blog/" class="filter-btn is-active">{{ t.label_all }}</a>
+  {%- for cat in all_cats -%}
+    {%- if cat != "" -%}
+    <a href="/blog/category/{{ cat | slugify }}/" class="filter-btn">{{ cat | replace: '-', ' ' }}</a>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+<!-- Posts grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+  {%- for post in posts -%}
+    {%- include post-card.html post=post -%}
+  {%- endfor -%}
+</div>
+
+{%- if posts.size == 0 -%}
+<div class="text-center text-muted py-16">
+  <p class="italic mb-2">No posts published yet.</p>
+  <p class="text-sm">First entries will appear here once published — typically short technical notes and case studies.</p>
+</div>
+{%- endif -%}
+
+<style>
+.filter-btn {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: #6b6b6b;
+  background: transparent;
+  display: inline-block;
+  transition: all 0.15s;
+}
+.filter-btn:hover { color: var(--ocean); border-color: var(--ocean); }
+.filter-btn.is-active { color: var(--paper); background: var(--ocean); border-color: var(--ocean); }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+</style>

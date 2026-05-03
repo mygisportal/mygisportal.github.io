@@ -1,0 +1,27 @@
+{%- assign p = include.post -%}
+<article class="group flex flex-col" data-search-item="{{ p.title }} {{ p.excerpt | strip_html }} {{ p.tags | join: ' ' }}">
+  {%- if p.image -%}
+  <a href="{{ p.url | relative_url }}" class="block aspect-[16/10] mb-4 overflow-hidden bg-paper-200 dark:bg-night-soft border border-rule rounded-sm">
+    <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+  </a>
+  {%- endif -%}
+
+  {%- if p.categories and p.categories.size > 0 -%}
+  <p class="text-[10px] font-mono uppercase tracking-[0.18em] text-ocean-700 dark:text-ocean-300 mb-2">{{ p.categories[0] | replace: '-', ' ' }}</p>
+  {%- endif -%}
+
+  <h3 class="font-display text-xl leading-snug mb-2 group-hover:text-ocean-700 dark:group-hover:text-ocean-300 transition">
+    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+  </h3>
+
+  {%- if p.excerpt -%}
+  <p class="text-sm text-muted leading-relaxed mb-3 line-clamp-3">{{ p.excerpt | strip_html | truncate: 140 }}</p>
+  {%- endif -%}
+
+  <div class="flex items-center gap-3 text-xs text-muted font-mono mt-auto">
+    <time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%b %-d, %Y" }}</time>
+    {%- assign words = p.content | number_of_words -%}
+    {%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+    <span>· {{ minutes }} min</span>
+  </div>
+</article>

@@ -1,0 +1,41 @@
+experience:
+  - role_en: "Geospatial Analyst & Survey Lead"
+    role_id: "Analis Geospasial & Pemimpin Survei"
+    organization: "Regional Planning Agency, West Java"
+    period: "2023 — Present"
+    location: "Purwakarta, Indonesia"
+    description_en: |
+      Lead spatial data analysis for regional drinking water supply system (SPAM) planning.
+      Designed survey protocols covering 6 sub-districts and ~150,000 tax objects;
+      synthesised findings into formal reports linking building activity data to
+      infrastructure planning decisions.
+    description_id: |
+      Memimpin analisis data spasial untuk perencanaan Sistem Penyediaan Air Minum (SPAM)
+      regional. Merancang protokol survei mencakup 6 kecamatan dan ±150.000 objek pajak;
+      menyusun laporan formal yang menghubungkan data aktivitas bangunan dengan keputusan
+      perencanaan infrastruktur.
+
+  - role_en: "Researcher — Solar Forecasting"
+    role_id: "Peneliti — Prakiraan Surya"
+    organization: "Independent Research"
+    period: "2024 — 2025"
+    location: "West Java, Indonesia"
+    description_en: |
+      Developed a hybrid WRF–LSTM model for solar irradiance forecasting in
+      data-sparse tropical regions. Manuscript currently under peer review.
+    description_id: |
+      Mengembangkan model hibrida WRF–LSTM untuk prakiraan iradiansi surya di
+      wilayah tropis dengan data terbatas. Naskah saat ini sedang dalam tinjauan sejawat.
+
+education:
+  - degree_en: "M.Sc. in Geospatial Information Science"
+    degree_id: "Magister Ilmu Informasi Geospasial"
+    institution: "[Your University]"
+    period: "20XX — 20XX"
+    thesis_en: "Thesis: [Your thesis title]"
+    thesis_id: "Tesis: [Judul tesis Anda]"
+
+  - degree_en: "B.Sc. in [Geography / Geodesy / Planning]"
+    degree_id: "Sarjana [Geografi / Geodesi / Perencanaan]"
+    institution: "[Your University]"
+    period: "20XX — 20XX"

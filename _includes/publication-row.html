@@ -1,0 +1,33 @@
+{%- assign pub = include.pub -%}
+<div class="grid grid-cols-12 gap-4 group">
+  <div class="col-span-2 md:col-span-1">
+    <span class="text-xs font-mono numeral text-muted">{{ pub.year }}</span>
+  </div>
+  <div class="col-span-10 md:col-span-11">
+    <h3 class="font-display text-lg leading-snug mb-1 group-hover:text-ocean-700 dark:group-hover:text-ocean-300 transition">
+      <a href="{{ pub.url | relative_url }}">{{ pub.title }}</a>
+    </h3>
+    {%- if pub.authors -%}
+    <p class="text-sm text-ink/75 dark:text-paper/75 mb-1">
+      {%- for a in pub.authors -%}
+        {%- if a contains site.author.full_name or a contains site.author.name -%}
+          <strong>{{ a }}</strong>
+        {%- else -%}
+          {{ a }}
+        {%- endif -%}
+        {%- unless forloop.last %}, {% endunless -%}
+      {%- endfor -%}
+    </p>
+    {%- endif -%}
+    {%- if pub.venue -%}
+    <p class="text-sm italic text-muted font-display">{{ pub.venue }}</p>
+    {%- endif -%}
+    <div class="flex flex-wrap gap-1.5 mt-2">
+      {%- if pub.pub_type -%}<span class="tag-pill is-ocean">{{ pub.pub_type }}</span>{%- endif -%}
+      {%- if pub.status -%}<span class="tag-pill is-earth">{{ pub.status }}</span>{%- endif -%}
+      {%- for tag in pub.tags limit: 3 -%}
+        <span class="tag-pill">{{ tag }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

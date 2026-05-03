@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+
+<article class="max-w-content mx-auto px-6 lg:px-10 py-16 lg:py-20">
+  {%- if page.title -%}
+  <header class="mb-10 reveal">
+    {%- if page.eyebrow -%}
+    <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">{{ page.eyebrow }}</p>
+    {%- endif -%}
+    <h1 class="font-display text-4xl lg:text-5xl tracking-tight">{{ page.title }}</h1>
+    {%- if page.subtitle -%}
+    <p class="mt-4 text-lg text-muted italic font-display max-w-prose-wide">{{ page.subtitle }}</p>
+    {%- endif -%}
+  </header>
+  <hr class="tufte-rule">
+  {%- endif -%}
+
+  <div class="reveal">
+    {{ content }}
+  </div>
+</article>

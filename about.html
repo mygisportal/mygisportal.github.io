@@ -1,0 +1,151 @@
+---
+layout: page
+title: "About"
+eyebrow: "Profile"
+subtitle: "A short biography, areas of expertise, and academic trajectory."
+permalink: /about/
+lang: en
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
+
+  <!-- Bio -->
+  <div class="lg:col-span-7">
+    <div class="prose-tufte" style="max-width: 100%;">
+      <p class="drop-cap">
+        I am a researcher and practitioner working at the intersection of <strong>geospatial information systems</strong>, <strong>satellite remote sensing</strong>, and <strong>disaster risk reduction</strong>. My work is grounded in regional planning practice in West Java, Indonesia, where geospatial methods translate directly into infrastructure and resilience decisions.
+      </p>
+
+      <p>
+        Most recently, I led the spatial analysis component of a regional drinking water supply system (SPAM) survey covering six sub-districts and approximately 150,000 tax-registered objects in Purwakarta — combining cadastral data, building activity records, and field surveys to inform service-area planning.
+      </p>
+
+      <p>
+        On the research side, I am currently revising a manuscript on <em>solar irradiance forecasting for data-sparse tropical regions using a hybrid WRF–LSTM approach</em> — bridging numerical weather prediction with deep learning to address forecasting gaps in West Java's renewable energy planning.
+      </p>
+
+      <p>
+        Beyond my professional work, I maintain an interest in historical cartography and geo-visual storytelling, and I write occasional notes on geospatial workflows, open data, and disaster preparedness.
+      </p>
+    </div>
+  </div>
+
+  <!-- Quick facts -->
+  <aside class="lg:col-span-5">
+    <div class="border border-rule rounded p-6 bg-paper dark:bg-night-soft sticky top-24">
+      <h2 class="text-xs uppercase tracking-widest text-muted font-medium mb-4">At a glance</h2>
+      <dl class="space-y-3 text-sm">
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Based in</dt>
+          <dd class="text-right">{{ site.author.location }}</dd>
+        </div>
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Affiliation</dt>
+          <dd class="text-right">{{ site.author.affiliation_en }}</dd>
+        </div>
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Languages</dt>
+          <dd class="text-right">Bahasa Indonesia, English</dd>
+        </div>
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Working</dt>
+          <dd class="text-right">QGIS · Python · GEE</dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-muted">Open to</dt>
+          <dd class="text-right">Collaboration · Consulting</dd>
+        </div>
+      </dl>
+
+      <a href="{{ site.author.cv_en | relative_url }}" target="_blank" class="btn btn-primary w-full justify-center mt-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download CV (PDF)
+      </a>
+    </div>
+  </aside>
+</div>
+
+<!-- =====================================================
+     EXPERTISE
+     ===================================================== -->
+<hr class="tufte-rule">
+
+<section class="reveal">
+  <h2 class="font-display text-3xl tracking-tight mb-2 italic font-medium">Areas of expertise</h2>
+  <p class="text-muted mb-10">A condensed map of the techniques and tools I work with.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+    {% for cat in site.data.skills.categories %}
+    <div>
+      <h3 class="font-display text-lg italic mb-4 pb-2 border-b border-rule">{{ cat.name_en }}</h3>
+      <ul class="space-y-3">
+        {% for skill in cat.skills %}
+        <li>
+          <div class="flex justify-between text-sm mb-1">
+            <span>{{ skill.name }}</span>
+            <span class="text-xs text-muted font-mono numeral">{{ skill.level }}%</span>
+          </div>
+          <div class="h-1 bg-paper-200 dark:bg-night-soft rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-ocean-700 to-forest-700 rounded-full" style="width: {{ skill.level }}%"></div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- =====================================================
+     EXPERIENCE TIMELINE
+     ===================================================== -->
+<hr class="tufte-rule">
+
+<section class="reveal">
+  <h2 class="font-display text-3xl tracking-tight mb-2 italic font-medium">Experience</h2>
+  <p class="text-muted mb-10">Selected professional and research engagements.</p>
+
+  <div class="relative pl-8">
+    <div class="absolute left-2 top-0 bottom-0 w-px bg-rule"></div>
+    {% for item in site.data.experience.experience %}
+    <div class="relative mb-10 last:mb-0">
+      <div class="absolute -left-7 top-2 w-3 h-3 rounded-full bg-paper border-2 border-ocean-700"></div>
+      <div class="flex flex-wrap items-baseline gap-x-3 mb-1">
+        <h3 class="font-display text-lg">{{ item.role_en }}</h3>
+        <span class="text-xs font-mono numeral text-muted">{{ item.period }}</span>
+      </div>
+      <p class="text-sm italic text-muted mb-2">{{ item.organization }}{% if item.location %} · {{ item.location }}{% endif %}</p>
+      <div class="text-sm text-ink/85 dark:text-paper/85 leading-relaxed max-w-prose-wide">
+        {{ item.description_en | markdownify }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- =====================================================
+     EDUCATION
+     ===================================================== -->
+<hr class="tufte-rule">
+
+<section class="reveal">
+  <h2 class="font-display text-3xl tracking-tight mb-2 italic font-medium">Education</h2>
+  <p class="text-muted mb-10">Formal academic training.</p>
+
+  <div class="space-y-6">
+    {% for item in site.data.experience.education %}
+    <div class="grid grid-cols-12 gap-4 pb-6 border-b border-rule last:border-b-0">
+      <div class="col-span-12 md:col-span-3">
+        <span class="text-xs font-mono numeral text-muted uppercase tracking-widest">{{ item.period }}</span>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h3 class="font-display text-lg mb-1">{{ item.degree_en }}</h3>
+        <p class="text-sm italic text-muted mb-1">{{ item.institution }}</p>
+        {% if item.thesis_en %}
+        <p class="text-sm">{{ item.thesis_en }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,131 @@
+# =====================================================
+# i18n strings — accessed via {{ site.data.i18n[page.lang].KEY }}
+# =====================================================
+
+en:
+  # Navigation
+  nav_home: "Home"
+  nav_about: "About"
+  nav_research: "Research"
+  nav_publications: "Publications"
+  nav_blog: "Blog"
+  nav_webgis: "WebGIS"
+  nav_gallery: "Gallery"
+  nav_contact: "Contact"
+  nav_cv: "CV"
+
+  # Home / Hero
+  hero_greeting: "Hello, I'm"
+  hero_cta_primary: "View Research"
+  hero_cta_secondary: "Download CV"
+
+  # Sections
+  section_about: "About"
+  section_expertise: "Areas of Expertise"
+  section_recent_work: "Recent Work"
+  section_recent_writing: "Recent Writing"
+  section_featured_pubs: "Featured Publications"
+  section_research: "Research & Projects"
+  section_publications: "Publications"
+  section_blog: "Insights & Notes"
+  section_contact: "Get in Touch"
+  section_webgis: "Interactive Maps"
+
+  # Labels
+  label_published: "Published"
+  label_year: "Year"
+  label_authors: "Authors"
+  label_venue: "Venue"
+  label_doi: "DOI"
+  label_pdf: "PDF"
+  label_cite: "Cite"
+  label_code: "Code"
+  label_data: "Data"
+  label_demo: "Demo"
+  label_read_more: "Read more"
+  label_view_all: "View all"
+  label_back: "Back"
+  label_categories: "Categories"
+  label_tags: "Tags"
+  label_min_read: "min read"
+  label_updated: "Updated"
+  label_filter: "Filter"
+  label_all: "All"
+  label_search: "Search…"
+
+  # Forms / Contact
+  contact_intro: "I'm always open to research collaborations, consulting work, and conversations about geospatial analytics and disaster resilience."
+  contact_email: "Email"
+  contact_orcid: "ORCID"
+  contact_scholar: "Google Scholar"
+
+  # Misc
+  toggle_theme: "Toggle theme"
+  toggle_language: "Bahasa Indonesia"
+  copyright: "Built with Jekyll. Hosted on GitHub Pages."
+  page_404_title: "Page not found"
+  page_404_text: "The page you are looking for does not exist."
+
+id:
+  # Navigation
+  nav_home: "Beranda"
+  nav_about: "Tentang"
+  nav_research: "Riset"
+  nav_publications: "Publikasi"
+  nav_blog: "Blog"
+  nav_webgis: "WebGIS"
+  nav_gallery: "Galeri"
+  nav_contact: "Kontak"
+  nav_cv: "CV"
+
+  # Home / Hero
+  hero_greeting: "Halo, saya"
+  hero_cta_primary: "Lihat Riset"
+  hero_cta_secondary: "Unduh CV"
+
+  # Sections
+  section_about: "Tentang"
+  section_expertise: "Bidang Keahlian"
+  section_recent_work: "Karya Terbaru"
+  section_recent_writing: "Tulisan Terbaru"
+  section_featured_pubs: "Publikasi Pilihan"
+  section_research: "Riset & Proyek"
+  section_publications: "Publikasi"
+  section_blog: "Catatan & Insight"
+  section_contact: "Hubungi Saya"
+  section_webgis: "Peta Interaktif"
+
+  # Labels
+  label_published: "Terbit"
+  label_year: "Tahun"
+  label_authors: "Penulis"
+  label_venue: "Venue"
+  label_doi: "DOI"
+  label_pdf: "PDF"
+  label_cite: "Sitasi"
+  label_code: "Kode"
+  label_data: "Data"
+  label_demo: "Demo"
+  label_read_more: "Selengkapnya"
+  label_view_all: "Lihat semua"
+  label_back: "Kembali"
+  label_categories: "Kategori"
+  label_tags: "Tag"
+  label_min_read: "menit baca"
+  label_updated: "Diperbarui"
+  label_filter: "Saring"
+  label_all: "Semua"
+  label_search: "Cari…"
+
+  # Forms / Contact
+  contact_intro: "Saya terbuka untuk kolaborasi riset, konsultasi, dan diskusi seputar analitik geospasial serta ketahanan bencana."
+  contact_email: "Email"
+  contact_orcid: "ORCID"
+  contact_scholar: "Google Scholar"
+
+  # Misc
+  toggle_theme: "Ubah tema"
+  toggle_language: "English"
+  copyright: "Dibangun dengan Jekyll. Di-hosting di GitHub Pages."
+  page_404_title: "Halaman tidak ditemukan"
+  page_404_text: "Halaman yang Anda cari tidak tersedia."

@@ -1,0 +1,53 @@
+---
+layout: page
+title: "Publikasi"
+eyebrow: "Bibliografi"
+subtitle: "Artikel jurnal yang telah ditinjau sejawat, laporan teknis, prosiding konferensi, dan preprint."
+permalink: /id/publications/
+lang: id
+---
+
+{%- assign pubs = site.publications | sort: "year" | reverse -%}
+{%- assign years = pubs | map: "year" | uniq -%}
+
+<div class="grid grid-cols-3 gap-6 mb-12">
+  <div class="border-l-2 border-ocean-700 pl-4">
+    <p class="text-3xl font-display numeral">{{ pubs.size }}</p>
+    <p class="text-xs uppercase tracking-widest text-muted mt-1">Total karya</p>
+  </div>
+  <div class="border-l-2 border-forest-700 pl-4">
+    <p class="text-3xl font-display numeral">{{ pubs | where: "pub_type", "Journal" | size }}</p>
+    <p class="text-xs uppercase tracking-widest text-muted mt-1">Artikel jurnal</p>
+  </div>
+  <div class="border-l-2 border-earth-300 pl-4">
+    <p class="text-3xl font-display numeral">{{ years.size }}</p>
+    <p class="text-xs uppercase tracking-widest text-muted mt-1">Tahun aktif</p>
+  </div>
+</div>
+
+{%- for yr in years -%}
+  <section class="mb-12">
+    <h2 class="font-display text-4xl numeral mb-6 italic font-medium text-ocean-700 dark:text-ocean-300">{{ yr }}</h2>
+    <ul class="divide-y divide-rule">
+      {%- assign yr_pubs = pubs | where: "year", yr -%}
+      {%- for pub in yr_pubs -%}
+        <li class="py-5">
+          {%- include publication-row.html pub=pub -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+{%- endfor -%}
+
+{%- if pubs.size == 0 -%}
+<p class="text-center text-muted py-12 italic">Belum ada publikasi — naskah sedang dalam proses.</p>
+{%- endif -%}
+
+<hr class="tufte-rule">
+
+<div class="prose-tufte mt-10" style="text-indent: 0; max-width: 100%;">
+  <h2 class="font-display italic font-medium">Mensitasi karya saya</h2>
+  <p style="text-indent: 0;">
+    Setiap halaman publikasi menyediakan blok BibTeX yang siap disalin. Anda juga bisa melihat bibliografi lengkap di profil <a href="{{ site.social.scholar }}">Google Scholar</a> saya atau melalui <a href="https://orcid.org/{{ site.social.orcid }}">ORCID ({{ site.social.orcid }})</a>.
+  </p>
+</div>

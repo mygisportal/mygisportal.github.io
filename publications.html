@@ -1,0 +1,56 @@
+---
+layout: page
+title: "Publications"
+eyebrow: "Bibliography"
+subtitle: "Peer-reviewed articles, technical reports, conference proceedings, and preprints."
+permalink: /publications/
+lang: en
+---
+
+{%- assign pubs = site.publications | where_exp: "p", "p.lang == 'en' or p.lang == nil" | sort: "year" | reverse -%}
+{%- assign years = pubs | map: "year" | uniq -%}
+
+<!-- Stats -->
+<div class="grid grid-cols-3 gap-6 mb-12">
+  <div class="border-l-2 border-ocean-700 pl-4">
+    <p class="text-3xl font-display numeral">{{ pubs.size }}</p>
+    <p class="text-xs uppercase tracking-widest text-muted mt-1">Total works</p>
+  </div>
+  <div class="border-l-2 border-forest-700 pl-4">
+    <p class="text-3xl font-display numeral">{{ pubs | where: "pub_type", "Journal" | size }}</p>
+    <p class="text-xs uppercase tracking-widest text-muted mt-1">Journal articles</p>
+  </div>
+  <div class="border-l-2 border-earth-300 pl-4">
+    <p class="text-3xl font-display numeral">{{ years.size }}</p>
+    <p class="text-xs uppercase tracking-widest text-muted mt-1">Active years</p>
+  </div>
+</div>
+
+<!-- Grouped by year -->
+{%- for yr in years -%}
+  <section class="mb-12">
+    <h2 class="font-display text-4xl numeral mb-6 italic font-medium text-ocean-700 dark:text-ocean-300">{{ yr }}</h2>
+    <ul class="divide-y divide-rule">
+      {%- assign yr_pubs = pubs | where: "year", yr -%}
+      {%- for pub in yr_pubs -%}
+        <li class="py-5">
+          {%- include publication-row.html pub=pub -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+{%- endfor -%}
+
+{%- if pubs.size == 0 -%}
+<p class="text-center text-muted py-12 italic">No publications yet — manuscripts in preparation.</p>
+{%- endif -%}
+
+<hr class="tufte-rule">
+
+<!-- BibTeX info -->
+<div class="prose-tufte mt-10" style="text-indent: 0; max-width: 100%;">
+  <h2 class="font-display italic font-medium">Citing my work</h2>
+  <p style="text-indent: 0;">
+    Each publication page provides a copy-ready BibTeX block. You can also browse a complete bibliography on my <a href="{{ site.social.scholar }}">Google Scholar</a> profile or via <a href="https://orcid.org/{{ site.social.orcid }}">ORCID ({{ site.social.orcid }})</a>.
+  </p>
+</div>

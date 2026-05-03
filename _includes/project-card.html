@@ -1,0 +1,32 @@
+{%- assign p = include.project -%}
+{%- assign lang = p.lang | default: 'en' -%}
+<article class="card-paper p-5 group flex flex-col h-full" data-cat="{{ p.category | default: 'all' }}">
+  {%- if p.image -%}
+  <div class="aspect-[16/10] -mx-5 -mt-5 mb-4 overflow-hidden bg-paper-200 dark:bg-night-soft border-b border-rule">
+    <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'">
+  </div>
+  {%- endif -%}
+
+  {%- if p.category -%}
+  <p class="text-[10px] font-mono uppercase tracking-[0.18em] text-ocean-700 dark:text-ocean-300 mb-2">{{ p.category | replace: '-', ' ' }}</p>
+  {%- endif -%}
+
+  <h3 class="font-display text-xl leading-snug mb-2 group-hover:text-ocean-700 dark:group-hover:text-ocean-300 transition">
+    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+  </h3>
+
+  {%- if p.subtitle -%}
+  <p class="text-sm text-muted italic font-display leading-relaxed flex-grow">{{ p.subtitle }}</p>
+  {%- endif -%}
+
+  <div class="flex items-center justify-between mt-4 pt-3 border-t border-rule">
+    <span class="text-xs text-muted font-mono numeral">{{ p.period | default: p.date | date: "%Y" }}</span>
+    {%- if p.tools and p.tools.size > 0 -%}
+    <div class="flex flex-wrap gap-1 justify-end">
+      {%- for tool in p.tools limit: 2 -%}
+        <span class="tag-pill text-[10px]">{{ tool }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+</article>
