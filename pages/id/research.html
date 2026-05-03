@@ -1,0 +1,45 @@
+---
+layout: page
+title: "Riset & Proyek"
+eyebrow: "Karya"
+subtitle: "Katalog riset, kerja lapangan, dan proyek geospasial terapan yang sedang berlangsung dan telah selesai."
+permalink: /id/research/
+lang: id
+---
+
+{%- assign t = site.data.i18n.id -%}
+{%- assign projects = site.projects | sort: "date" | reverse -%}
+
+<div data-filter-group class="mb-10">
+  <p class="text-xs uppercase tracking-widest text-muted mb-3">{{ t.label_filter }}</p>
+  <div class="flex flex-wrap gap-2">
+    <button data-filter="all" class="filter-btn">{{ t.label_all }}</button>
+    <button data-filter="remote-sensing" class="filter-btn">Penginderaan Jauh</button>
+    <button data-filter="disaster" class="filter-btn">Manajemen Bencana</button>
+    <button data-filter="planning" class="filter-btn">Tata Ruang</button>
+    <button data-filter="webgis" class="filter-btn">WebGIS</button>
+  </div>
+
+  <hr class="tufte-rule" style="margin: 2rem 0;">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    {%- for project in projects -%}
+      {%- include project-card.html project=project -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if projects.size == 0 -%}
+  <p class="text-center text-muted py-12 italic">Belum ada proyek — silakan kembali nanti.</p>
+  {%- endif -%}
+</div>
+
+<style>
+.filter-btn {
+  font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 0.4rem 0.85rem; border: 1px solid var(--rule);
+  border-radius: 3px; color: #6b6b6b; background: transparent; transition: all 0.15s; cursor: pointer;
+}
+.filter-btn:hover { color: var(--ocean); border-color: var(--ocean); }
+.filter-btn.is-active { color: var(--paper); background: var(--ocean); border-color: var(--ocean); }
+html.dark .filter-btn.is-active { color: #0e1116; background: #7aaac9; border-color: #7aaac9; }
+</style>

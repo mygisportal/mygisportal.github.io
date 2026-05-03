@@ -1,0 +1,39 @@
+# Skills & expertise — used on About page
+categories:
+  - name_en: "Geospatial Analysis"
+    name_id: "Analisis Geospasial"
+    icon: "map"
+    skills:
+      - { name: "QGIS", level: 95 }
+      - { name: "ArcGIS Pro", level: 85 }
+      - { name: "PostGIS", level: 75 }
+      - { name: "GeoPandas", level: 90 }
+      - { name: "GDAL/OGR", level: 80 }
+
+  - name_en: "Remote Sensing"
+    name_id: "Penginderaan Jauh"
+    icon: "satellite"
+    skills:
+      - { name: "Google Earth Engine", level: 90 }
+      - { name: "ENVI / SNAP", level: 75 }
+      - { name: "Sentinel-1/2 processing", level: 85 }
+      - { name: "Landsat time-series", level: 80 }
+
+  - name_en: "Disaster Risk Modelling"
+    name_id: "Pemodelan Risiko Bencana"
+    icon: "alert-triangle"
+    skills:
+      - { name: "Flood hazard mapping", level: 85 }
+      - { name: "Landslide susceptibility (AHP/ML)", level: 80 }
+      - { name: "Risk & vulnerability indices", level: 75 }
+      - { name: "WRF numerical weather prediction", level: 70 }
+
+  - name_en: "Programming & Data"
+    name_id: "Pemrograman & Data"
+    icon: "code"
+    skills:
+      - { name: "Python (geo stack)", level: 90 }
+      - { name: "R (sf, terra)", level: 75 }
+      - { name: "JavaScript (Leaflet/Mapbox)", level: 80 }
+      - { name: "SQL / PostgreSQL", level: 75 }
+      - { name: "PyTorch / LSTM models", level: 70 }

@@ -1,0 +1,216 @@
+---
+layout: home
+title: "Home"
+lang: en
+permalink: /
+description: "Personal academic portfolio of Satria — researcher in GIS, remote sensing, and disaster risk reduction across tropical Indonesia."
+---
+
+{%- assign t = site.data.i18n.en -%}
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 hero-grid opacity-50 pointer-events-none"></div>
+
+  <div class="relative max-w-content mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-32 lg:pb-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+      <!-- Left: Text -->
+      <div class="lg:col-span-7 reveal">
+        <p class="text-xs font-mono uppercase tracking-[0.25em] text-ocean-700 dark:text-ocean-300 mb-5">
+          {{ t.hero_greeting }} —
+        </p>
+
+        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-6">
+          {{ site.author.full_name }}<span class="text-ocean-700 dark:text-ocean-300">.</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-muted font-display italic leading-snug max-w-prose-wide mb-8">
+          {{ site.tagline_en }}
+        </p>
+
+        <p class="prose-tufte mb-8" style="text-indent: 0; max-width: 36rem;">
+          I work at the intersection of geospatial information systems, satellite-based earth observation, and disaster risk reduction — turning open data into clear evidence for spatial decisions across tropical Indonesia.
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="/research/" class="btn btn-primary">
+            {{ t.hero_cta_primary }}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="{{ site.author.cv_en | relative_url }}" class="btn btn-ghost" target="_blank">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            {{ t.hero_cta_secondary }}
+          </a>
+        </div>
+
+        <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted">
+          <div>
+            <span class="block text-2xl font-display numeral text-ink dark:text-paper">06+</span>
+            <span class="text-xs uppercase tracking-widest">years field & research</span>
+          </div>
+          <div>
+            <span class="block text-2xl font-display numeral text-ink dark:text-paper">150k+</span>
+            <span class="text-xs uppercase tracking-widest">spatial objects analysed</span>
+          </div>
+          <div>
+            <span class="block text-2xl font-display numeral text-ink dark:text-paper">06</span>
+            <span class="text-xs uppercase tracking-widest">sub-districts surveyed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Portrait card -->
+      <div class="lg:col-span-5 reveal">
+        <div class="relative max-w-sm mx-auto lg:ml-auto lg:mr-0">
+          <div class="absolute -inset-4 bg-gradient-to-br from-ocean-100 to-forest-100 dark:from-ocean-900/30 dark:to-forest-900/30 rounded-sm rotate-2"></div>
+          <div class="relative bg-paper dark:bg-night border border-rule rounded-sm shadow-paper overflow-hidden">
+            <div class="aspect-[4/5] bg-gradient-to-br from-ocean-100 via-paper to-forest-100 dark:from-ocean-900/40 dark:via-night dark:to-forest-900/40 flex items-center justify-center relative">
+              <!-- Placeholder portrait — replace with /assets/images/avatar.jpg -->
+              <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.full_name }}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="absolute inset-0 hidden items-center justify-center font-display text-7xl text-ocean-700/30 dark:text-ocean-300/30">
+                {{ site.author.name | slice: 0, 1 }}
+              </div>
+            </div>
+            <div class="px-5 py-4 border-t border-rule text-center">
+              <p class="text-xs font-mono uppercase tracking-widest text-muted">currently</p>
+              <p class="text-sm mt-1">{{ site.author.affiliation_en }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     EXPERTISE
+     ===================================================== -->
+<section class="border-t border-rule">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 reveal">
+      <div class="lg:col-span-4">
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">01 — {{ t.section_expertise }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">Three intersecting fields, one toolkit.</h2>
+      </div>
+      <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <div class="border-l-2 border-ocean-700 pl-5 py-2">
+          <h3 class="font-display text-lg italic mb-2">Geospatial Information Systems</h3>
+          <p class="text-sm text-muted leading-relaxed">Spatial data modelling, vector & raster analysis, cadastral systems, and infrastructure planning — with QGIS, PostGIS, and Python.</p>
+        </div>
+
+        <div class="border-l-2 border-forest-700 pl-5 py-2">
+          <h3 class="font-display text-lg italic mb-2">Remote Sensing</h3>
+          <p class="text-sm text-muted leading-relaxed">Sentinel-1/2 and Landsat time-series for land cover, vegetation, and surface water dynamics — processed at scale on Google Earth Engine.</p>
+        </div>
+
+        <div class="border-l-2 border-earth-300 pl-5 py-2">
+          <h3 class="font-display text-lg italic mb-2">Disaster Management</h3>
+          <p class="text-sm text-muted leading-relaxed">Hazard mapping, vulnerability and risk assessment, and early-warning prototypes for flood, landslide, and seismic events in tropical settings.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     RECENT WORK
+     ===================================================== -->
+<section class="border-t border-rule bg-paper-200/30 dark:bg-night-soft/40">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="flex items-end justify-between mb-10 reveal">
+      <div>
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">02 — {{ t.section_recent_work }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">Selected projects.</h2>
+      </div>
+      <a href="/research/" class="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted hover:text-ocean-700 dark:hover:text-ocean-300">
+        {{ t.label_view_all }}
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {%- assign recent_projects = site.projects | where_exp: "p", "p.lang == 'en' or p.lang == nil" | sort: "date" | reverse | slice: 0, 3 -%}
+      {%- for project in recent_projects -%}
+        {%- include project-card.html project=project -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     FEATURED PUBLICATIONS
+     ===================================================== -->
+<section class="border-t border-rule">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4 reveal">
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">03 — {{ t.section_featured_pubs }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">Selected publications.</h2>
+        <a href="/publications/" class="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ocean-700 dark:hover:text-ocean-300 mt-5">
+          {{ t.label_view_all }} →
+        </a>
+      </div>
+
+      <div class="lg:col-span-8 reveal">
+        {%- assign featured_pubs = site.publications | where_exp: "p", "p.lang == 'en' or p.lang == nil" | where: "featured", true | sort: "year" | reverse -%}
+        {%- if featured_pubs.size == 0 -%}
+          {%- assign featured_pubs = site.publications | where_exp: "p", "p.lang == 'en' or p.lang == nil" | sort: "year" | reverse | slice: 0, 3 -%}
+        {%- endif -%}
+        <ul class="divide-y divide-rule">
+          {%- for pub in featured_pubs -%}
+            <li class="py-5">
+              {%- include publication-row.html pub=pub -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     RECENT WRITING
+     ===================================================== -->
+<section class="border-t border-rule">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="flex items-end justify-between mb-10 reveal">
+      <div>
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">04 — {{ t.section_recent_writing }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">From the journal.</h2>
+      </div>
+      <a href="/blog/" class="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted hover:text-ocean-700 dark:hover:text-ocean-300">
+        {{ t.label_view_all }}
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {%- assign recent_posts = site.posts | where_exp: "p", "p.lang == 'en' or p.lang == nil" | slice: 0, 3 -%}
+      {%- for post in recent_posts -%}
+        {%- include post-card.html post=post -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     CTA
+     ===================================================== -->
+<section class="border-t border-rule bg-ocean-700 dark:bg-ocean-900 text-paper">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-16 text-center">
+    <h2 class="font-display text-3xl md:text-4xl tracking-tight italic font-medium mb-4">Let's collaborate.</h2>
+    <p class="text-paper/80 max-w-prose mx-auto mb-7">
+      Open to research partnerships, consulting on geospatial workflows, and conversations on disaster resilience in Indonesia and Southeast Asia.
+    </p>
+    <a href="/contact/" class="inline-flex items-center gap-2 px-6 py-3 bg-paper text-ocean-700 rounded font-medium hover:bg-paper-200 transition">
+      {{ t.section_contact }}
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+</section>

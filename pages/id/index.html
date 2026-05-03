@@ -1,0 +1,201 @@
+---
+layout: home
+title: "Beranda"
+lang: id
+permalink: /id/
+description: "Portofolio akademik Satria — peneliti SIG, penginderaan jauh, dan pengurangan risiko bencana di Indonesia."
+---
+
+{%- assign t = site.data.i18n.id -%}
+
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 hero-grid opacity-50 pointer-events-none"></div>
+
+  <div class="relative max-w-content mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-32 lg:pb-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+      <div class="lg:col-span-7 reveal">
+        <p class="text-xs font-mono uppercase tracking-[0.25em] text-ocean-700 dark:text-ocean-300 mb-5">
+          {{ t.hero_greeting }} —
+        </p>
+
+        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-6">
+          {{ site.author.full_name }}<span class="text-ocean-700 dark:text-ocean-300">.</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-muted font-display italic leading-snug max-w-prose-wide mb-8">
+          {{ site.tagline_id }}
+        </p>
+
+        <p class="prose-tufte mb-8" style="text-indent: 0; max-width: 36rem;">
+          Saya bekerja di persimpangan antara sistem informasi geografis, observasi bumi berbasis satelit, dan pengurangan risiko bencana — mengubah data terbuka menjadi bukti yang jelas untuk pengambilan keputusan spasial di Indonesia tropis.
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="/id/research/" class="btn btn-primary">
+            {{ t.hero_cta_primary }}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="{{ site.author.cv_id | relative_url }}" class="btn btn-ghost" target="_blank">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            {{ t.hero_cta_secondary }}
+          </a>
+        </div>
+
+        <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted">
+          <div>
+            <span class="block text-2xl font-display numeral text-ink dark:text-paper">06+</span>
+            <span class="text-xs uppercase tracking-widest">tahun riset & lapangan</span>
+          </div>
+          <div>
+            <span class="block text-2xl font-display numeral text-ink dark:text-paper">150rb+</span>
+            <span class="text-xs uppercase tracking-widest">objek spasial dianalisis</span>
+          </div>
+          <div>
+            <span class="block text-2xl font-display numeral text-ink dark:text-paper">06</span>
+            <span class="text-xs uppercase tracking-widest">kecamatan disurvei</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 reveal">
+        <div class="relative max-w-sm mx-auto lg:ml-auto lg:mr-0">
+          <div class="absolute -inset-4 bg-gradient-to-br from-ocean-100 to-forest-100 dark:from-ocean-900/30 dark:to-forest-900/30 rounded-sm rotate-2"></div>
+          <div class="relative bg-paper dark:bg-night border border-rule rounded-sm shadow-paper overflow-hidden">
+            <div class="aspect-[4/5] bg-gradient-to-br from-ocean-100 via-paper to-forest-100 dark:from-ocean-900/40 dark:via-night dark:to-forest-900/40 flex items-center justify-center relative">
+              <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.full_name }}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="absolute inset-0 hidden items-center justify-center font-display text-7xl text-ocean-700/30 dark:text-ocean-300/30">
+                {{ site.author.name | slice: 0, 1 }}
+              </div>
+            </div>
+            <div class="px-5 py-4 border-t border-rule text-center">
+              <p class="text-xs font-mono uppercase tracking-widest text-muted">saat ini</p>
+              <p class="text-sm mt-1">{{ site.author.affiliation_id }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="border-t border-rule">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 reveal">
+      <div class="lg:col-span-4">
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">01 — {{ t.section_expertise }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">Tiga bidang yang saling beririsan, satu toolkit.</h2>
+      </div>
+      <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <div class="border-l-2 border-ocean-700 pl-5 py-2">
+          <h3 class="font-display text-lg italic mb-2">Sistem Informasi Geografis</h3>
+          <p class="text-sm text-muted leading-relaxed">Pemodelan data spasial, analisis vektor & raster, sistem kadaster, dan perencanaan infrastruktur — dengan QGIS, PostGIS, dan Python.</p>
+        </div>
+
+        <div class="border-l-2 border-forest-700 pl-5 py-2">
+          <h3 class="font-display text-lg italic mb-2">Penginderaan Jauh</h3>
+          <p class="text-sm text-muted leading-relaxed">Time-series Sentinel-1/2 dan Landsat untuk tutupan lahan, vegetasi, dan dinamika air permukaan — diproses dalam skala besar di Google Earth Engine.</p>
+        </div>
+
+        <div class="border-l-2 border-earth-300 pl-5 py-2">
+          <h3 class="font-display text-lg italic mb-2">Manajemen Bencana</h3>
+          <p class="text-sm text-muted leading-relaxed">Pemetaan bahaya, penilaian kerentanan dan risiko, serta prototipe peringatan dini untuk banjir, longsor, dan gempa di wilayah tropis.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WORK -->
+<section class="border-t border-rule bg-paper-200/30 dark:bg-night-soft/40">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="flex items-end justify-between mb-10 reveal">
+      <div>
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">02 — {{ t.section_recent_work }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">Proyek pilihan.</h2>
+      </div>
+      <a href="/id/research/" class="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted hover:text-ocean-700 dark:hover:text-ocean-300">
+        {{ t.label_view_all }}
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {%- assign recent_projects = site.projects | sort: "date" | reverse | slice: 0, 3 -%}
+      {%- for project in recent_projects -%}
+        {%- include project-card.html project=project -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PUBLICATIONS -->
+<section class="border-t border-rule">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4 reveal">
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">03 — {{ t.section_featured_pubs }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">Publikasi pilihan.</h2>
+        <a href="/id/publications/" class="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ocean-700 dark:hover:text-ocean-300 mt-5">
+          {{ t.label_view_all }} →
+        </a>
+      </div>
+
+      <div class="lg:col-span-8 reveal">
+        {%- assign featured_pubs = site.publications | where: "featured", true | sort: "year" | reverse -%}
+        {%- if featured_pubs.size == 0 -%}
+          {%- assign featured_pubs = site.publications | sort: "year" | reverse | slice: 0, 3 -%}
+        {%- endif -%}
+        <ul class="divide-y divide-rule">
+          {%- for pub in featured_pubs -%}
+            <li class="py-5">
+              {%- include publication-row.html pub=pub -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WRITING -->
+<section class="border-t border-rule">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-20">
+    <div class="flex items-end justify-between mb-10 reveal">
+      <div>
+        <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">04 — {{ t.section_recent_writing }}</p>
+        <h2 class="font-display text-3xl md:text-4xl tracking-tight">Dari catatan.</h2>
+      </div>
+      <a href="/id/blog/" class="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted hover:text-ocean-700 dark:hover:text-ocean-300">
+        {{ t.label_view_all }}
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {%- assign recent_posts = site.posts | slice: 0, 3 -%}
+      {%- for post in recent_posts -%}
+        {%- include post-card.html post=post -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="border-t border-rule bg-ocean-700 dark:bg-ocean-900 text-paper">
+  <div class="max-w-content mx-auto px-6 lg:px-10 py-16 text-center">
+    <h2 class="font-display text-3xl md:text-4xl tracking-tight italic font-medium mb-4">Mari berkolaborasi.</h2>
+    <p class="text-paper/80 max-w-prose mx-auto mb-7">
+      Terbuka untuk kolaborasi riset, konsultasi alur kerja geospasial, dan diskusi seputar ketahanan bencana di Indonesia dan Asia Tenggara.
+    </p>
+    <a href="/id/contact/" class="inline-flex items-center gap-2 px-6 py-3 bg-paper text-ocean-700 rounded font-medium hover:bg-paper-200 transition">
+      {{ t.section_contact }}
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+</section>

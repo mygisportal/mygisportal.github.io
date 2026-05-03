@@ -1,0 +1,94 @@
+---
+layout: default
+---
+
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+
+<article class="max-w-content mx-auto px-6 lg:px-10 py-16 lg:py-20">
+
+  <a href="{% if lang == 'id' %}/id{% endif %}/publications/" class="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-muted hover:text-ocean-700 dark:hover:text-ocean-300 mb-8 transition">
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    {{ t.label_back }}
+  </a>
+
+  <div class="max-w-prose-wide reveal">
+
+    <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">
+      {{ page.pub_type | default: "Article" }} · <span class="numeral">{{ page.year }}</span>
+    </p>
+
+    <h1 class="font-display text-3xl md:text-4xl tracking-tight leading-tight mb-5">{{ page.title }}</h1>
+
+    {%- if page.authors -%}
+    <p class="text-base mb-2">
+      {%- for a in page.authors -%}
+        {%- if a contains site.author.full_name or a contains site.author.name -%}
+          <strong>{{ a }}</strong>
+        {%- else -%}
+          {{ a }}
+        {%- endif -%}
+        {%- unless forloop.last %}, {% endunless -%}
+      {%- endfor -%}
+    </p>
+    {%- endif -%}
+
+    {%- if page.venue -%}
+    <p class="text-sm text-muted italic font-display mb-6">{{ page.venue }}{% if page.volume %}, vol. {{ page.volume }}{% endif %}{% if page.pages %}, pp. {{ page.pages }}{% endif %}</p>
+    {%- endif -%}
+
+    <!-- Action buttons -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      {%- if page.pdf -%}
+        <a href="{{ page.pdf | relative_url }}" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          PDF
+        </a>
+      {%- endif -%}
+      {%- if page.doi -%}
+        <a href="https://doi.org/{{ page.doi }}" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101"/></svg>
+          DOI
+        </a>
+      {%- endif -%}
+      {%- if page.code -%}
+        <a href="{{ page.code }}" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          Code
+        </a>
+      {%- endif -%}
+      {%- if page.data -%}
+        <a href="{{ page.data }}" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3z"/></svg>
+          Data
+        </a>
+      {%- endif -%}
+      {%- if page.bibtex -%}
+        <button data-copy-cite="#bibtex-block" class="btn btn-ghost">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+          Copy BibTeX
+        </button>
+      {%- endif -%}
+    </div>
+
+    <hr class="tufte-rule">
+
+    {%- if page.abstract -%}
+    <h2 class="font-display italic text-xl font-medium mb-3">Abstract</h2>
+    <p class="prose-tufte" style="text-indent: 0;">{{ page.abstract }}</p>
+    {%- endif -%}
+
+    {%- if content != "" -%}
+    <div class="prose-tufte mt-8" style="max-width: 100%;">
+      {{ content }}
+    </div>
+    {%- endif -%}
+
+    {%- if page.bibtex -%}
+    <hr class="tufte-rule">
+    <h2 class="font-display italic text-xl font-medium mb-3">BibTeX</h2>
+    <pre id="bibtex-block" class="text-xs"><code>{{ page.bibtex }}</code></pre>
+    {%- endif -%}
+
+  </div>
+</article>

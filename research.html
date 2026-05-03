@@ -1,0 +1,55 @@
+---
+layout: page
+title: "Research & Projects"
+eyebrow: "Work"
+subtitle: "A catalogue of completed and ongoing research, fieldwork, and applied geospatial projects."
+permalink: /research/
+lang: en
+---
+
+{%- assign t = site.data.i18n.en -%}
+{%- assign projects = site.projects | where_exp: "p", "p.lang == 'en' or p.lang == nil" | sort: "date" | reverse -%}
+
+<!-- Filter -->
+<div data-filter-group class="mb-10">
+  <p class="text-xs uppercase tracking-widest text-muted mb-3">{{ t.label_filter }}</p>
+  <div class="flex flex-wrap gap-2">
+    <button data-filter="all" class="filter-btn">{{ t.label_all }}</button>
+    <button data-filter="remote-sensing" class="filter-btn">Remote Sensing</button>
+    <button data-filter="disaster" class="filter-btn">Disaster Mgmt</button>
+    <button data-filter="planning" class="filter-btn">Spatial Planning</button>
+    <button data-filter="webgis" class="filter-btn">WebGIS</button>
+  </div>
+
+  <hr class="tufte-rule" style="margin: 2rem 0;">
+
+  <!-- Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    {%- for project in projects -%}
+      {%- include project-card.html project=project -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if projects.size == 0 -%}
+  <p class="text-center text-muted py-12 italic">No projects yet — check back soon.</p>
+  {%- endif -%}
+</div>
+
+<style>
+.filter-btn {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--muted, #6b6b6b);
+  background: transparent;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.filter-btn:hover { color: var(--ocean); border-color: var(--ocean); }
+.filter-btn.is-active { color: var(--paper); background: var(--ocean); border-color: var(--ocean); }
+html.dark .filter-btn.is-active { color: #0e1116; background: #7aaac9; border-color: #7aaac9; }
+</style>

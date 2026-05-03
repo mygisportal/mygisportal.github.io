@@ -1,0 +1,113 @@
+---
+layout: default
+---
+
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+
+<article class="max-w-content mx-auto px-6 lg:px-10 py-16 lg:py-20">
+
+  <a href="{% if lang == 'id' %}/id{% endif %}/research/" class="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-muted hover:text-ocean-700 dark:hover:text-ocean-300 mb-8 transition">
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    {{ t.label_back }}
+  </a>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+    <!-- Main column -->
+    <div class="lg:col-span-2 reveal">
+      {%- if page.category -%}
+      <p class="text-xs font-mono uppercase tracking-[0.2em] text-ocean-700 dark:text-ocean-300 mb-3">{{ page.category }}</p>
+      {%- endif -%}
+
+      <h1 class="font-display text-4xl md:text-5xl tracking-tight leading-tight mb-4">{{ page.title }}</h1>
+
+      {%- if page.subtitle -%}
+      <p class="text-lg text-muted italic font-display max-w-prose-wide mb-6">{{ page.subtitle }}</p>
+      {%- endif -%}
+
+      {%- if page.image -%}
+      <figure class="mb-10">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="w-full rounded border border-rule">
+        {%- if page.image_caption -%}
+        <figcaption class="text-xs text-muted text-center mt-2 italic">{{ page.image_caption }}</figcaption>
+        {%- endif -%}
+      </figure>
+      {%- endif -%}
+
+      <div class="prose-tufte" style="max-width: 100%;">
+        {{ content }}
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1 reveal">
+      <div class="sticky top-24 space-y-6">
+
+        <div class="border border-rule rounded p-5">
+          <h2 class="text-xs uppercase tracking-widest text-muted font-medium mb-4">Project Info</h2>
+          <dl class="space-y-3 text-sm">
+            {%- if page.period -%}
+            <div>
+              <dt class="text-muted text-xs">Period</dt>
+              <dd class="font-mono numeral">{{ page.period }}</dd>
+            </div>
+            {%- endif -%}
+            {%- if page.role -%}
+            <div>
+              <dt class="text-muted text-xs">Role</dt>
+              <dd>{{ page.role }}</dd>
+            </div>
+            {%- endif -%}
+            {%- if page.collaborators -%}
+            <div>
+              <dt class="text-muted text-xs">Collaborators</dt>
+              <dd>{{ page.collaborators | join: ", " }}</dd>
+            </div>
+            {%- endif -%}
+            {%- if page.location -%}
+            <div>
+              <dt class="text-muted text-xs">Location</dt>
+              <dd>{{ page.location }}</dd>
+            </div>
+            {%- endif -%}
+            {%- if page.status -%}
+            <div>
+              <dt class="text-muted text-xs">Status</dt>
+              <dd>{{ page.status }}</dd>
+            </div>
+            {%- endif -%}
+          </dl>
+        </div>
+
+        {%- if page.tools and page.tools.size > 0 -%}
+        <div>
+          <h2 class="text-xs uppercase tracking-widest text-muted font-medium mb-2">Stack</h2>
+          <div class="flex flex-wrap gap-1.5">
+            {%- for tool in page.tools -%}
+              <span class="tag-pill">{{ tool }}</span>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- endif -%}
+
+        {%- if page.links and page.links.size > 0 -%}
+        <div>
+          <h2 class="text-xs uppercase tracking-widest text-muted font-medium mb-2">Links</h2>
+          <ul class="space-y-1.5 text-sm">
+            {%- for link in page.links -%}
+              <li>
+                <a href="{{ link.url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-ocean-700 dark:text-ocean-300 hover:underline">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  {{ link.label }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        {%- endif -%}
+
+      </div>
+    </aside>
+  </div>
+</article>

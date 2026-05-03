@@ -1,0 +1,150 @@
+# =====================================================
+# SITE METADATA — EDIT THIS FIRST
+# =====================================================
+title: "Satria | Geospatial Researcher"
+tagline_en: "Geospatial Information Systems · Remote Sensing · Disaster Management"
+tagline_id: "Sistem Informasi Geografis · Penginderaan Jauh · Manajemen Bencana"
+description_en: "Personal academic portfolio of Satria — researcher in GIS, remote sensing, and disaster risk reduction across tropical Indonesia."
+description_id: "Portofolio akademik Satria — peneliti SIG, penginderaan jauh, dan pengurangan risiko bencana di Indonesia."
+
+# Replace with your actual GitHub username
+url: "https://yourusername.github.io"
+baseurl: ""
+
+# =====================================================
+# AUTHOR / OWNER PROFILE
+# =====================================================
+author:
+  name: "Satria"
+  full_name: "Satria [Your Full Name]"
+  title_en: "Geospatial Researcher & Disaster Risk Analyst"
+  title_id: "Peneliti Geospasial & Analis Risiko Bencana"
+  affiliation_en: "Regional Planning & Geospatial Analytics, West Java"
+  affiliation_id: "Perencanaan Wilayah & Analitik Geospasial, Jawa Barat"
+  email: "your.email@example.com"
+  location: "Bandung, Indonesia"
+  avatar: "/assets/images/avatar.jpg"
+  cv_en: "/assets/cv/cv-en.pdf"
+  cv_id: "/assets/cv/cv-id.pdf"
+
+# =====================================================
+# SOCIAL LINKS — leave empty string "" to hide
+# =====================================================
+social:
+  github: "yourusername"
+  scholar: "https://scholar.google.com/citations?user=YOUR_ID"
+  orcid: "0000-0000-0000-0000"
+  researchgate: "Your-Name"
+  linkedin: "yourusername"
+  twitter: ""
+  instagram: ""
+
+# =====================================================
+# LANGUAGES (Bilingual: English + Indonesian)
+# =====================================================
+languages: ["en", "id"]
+default_lang: "en"
+exclude_from_localizations: ["assets", "README.md", "LICENSE"]
+
+# =====================================================
+# COLLECTIONS — content types beyond blog posts
+# =====================================================
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:path/
+  publications:
+    output: true
+    permalink: /:collection/:path/
+
+# =====================================================
+# DEFAULTS — front matter applied automatically
+# =====================================================
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Satria"
+      comments: true
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "publication"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      lang: "en"
+
+# =====================================================
+# BUILD SETTINGS
+# =====================================================
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:slug/
+timezone: Asia/Jakarta
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+# =====================================================
+# PLUGINS (all GitHub Pages compatible)
+# =====================================================
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-redirect-from
+
+# Pagination for blog
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# =====================================================
+# COMMENT SYSTEM (Giscus — GitHub Discussions)
+# Setup at: https://giscus.app
+# =====================================================
+giscus:
+  enabled: false  # set true after configuring below
+  repo: "yourusername/yourusername.github.io"
+  repo_id: "REPO_ID_FROM_GISCUS"
+  category: "Announcements"
+  category_id: "CATEGORY_ID_FROM_GISCUS"
+  mapping: "pathname"
+  reactions_enabled: "1"
+  theme: "preferred_color_scheme"
+
+# =====================================================
+# ANALYTICS (optional)
+# =====================================================
+analytics:
+  google: ""        # e.g. "G-XXXXXXXXXX"
+  plausible: ""     # e.g. "yourdomain.com"
+
+# =====================================================
+# EXCLUDE FROM BUILD
+# =====================================================
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - tailwind.config.js
+  - package.json
+  - package-lock.json

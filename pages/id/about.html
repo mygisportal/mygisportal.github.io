@@ -1,0 +1,140 @@
+---
+layout: page
+title: "Tentang"
+eyebrow: "Profil"
+subtitle: "Biografi singkat, bidang keahlian, dan jejak akademik."
+permalink: /id/about/
+lang: id
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
+
+  <div class="lg:col-span-7">
+    <div class="prose-tufte" style="max-width: 100%;">
+      <p class="drop-cap">
+        Saya seorang peneliti dan praktisi yang bekerja di persimpangan antara <strong>sistem informasi geografis</strong>, <strong>penginderaan jauh berbasis satelit</strong>, dan <strong>pengurangan risiko bencana</strong>. Pekerjaan saya berakar pada praktik perencanaan wilayah di Jawa Barat, di mana metode geospasial diterjemahkan langsung menjadi keputusan infrastruktur dan ketahanan.
+      </p>
+
+      <p>
+        Baru-baru ini, saya memimpin komponen analisis spasial dari survei Sistem Penyediaan Air Minum (SPAM) regional yang mencakup enam kecamatan dan sekitar 150.000 objek pajak terdaftar di Purwakarta — menggabungkan data kadaster, catatan aktivitas bangunan, dan survei lapangan untuk menginformasikan perencanaan wilayah layanan.
+      </p>
+
+      <p>
+        Di sisi riset, saat ini saya sedang merevisi naskah tentang <em>prakiraan iradiansi surya untuk wilayah tropis dengan data terbatas menggunakan pendekatan hibrida WRF–LSTM</em> — menjembatani prakiraan cuaca numerik dengan deep learning untuk mengatasi kesenjangan prakiraan dalam perencanaan energi terbarukan Jawa Barat.
+      </p>
+
+      <p>
+        Di luar pekerjaan profesional, saya tertarik pada kartografi historis dan penceritaan geo-visual, serta menulis catatan-catatan singkat seputar alur kerja geospasial, data terbuka, dan kesiapsiagaan bencana.
+      </p>
+    </div>
+  </div>
+
+  <aside class="lg:col-span-5">
+    <div class="border border-rule rounded p-6 bg-paper dark:bg-night-soft sticky top-24">
+      <h2 class="text-xs uppercase tracking-widest text-muted font-medium mb-4">Sekilas</h2>
+      <dl class="space-y-3 text-sm">
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Berbasis di</dt>
+          <dd class="text-right">{{ site.author.location }}</dd>
+        </div>
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Afiliasi</dt>
+          <dd class="text-right">{{ site.author.affiliation_id }}</dd>
+        </div>
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Bahasa</dt>
+          <dd class="text-right">Indonesia, Inggris</dd>
+        </div>
+        <div class="flex justify-between border-b border-rule pb-2">
+          <dt class="text-muted">Stack utama</dt>
+          <dd class="text-right">QGIS · Python · GEE</dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-muted">Terbuka untuk</dt>
+          <dd class="text-right">Kolaborasi · Konsultasi</dd>
+        </div>
+      </dl>
+
+      <a href="{{ site.author.cv_id | relative_url }}" target="_blank" class="btn btn-primary w-full justify-center mt-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Unduh CV (PDF)
+      </a>
+    </div>
+  </aside>
+</div>
+
+<hr class="tufte-rule">
+
+<section class="reveal">
+  <h2 class="font-display text-3xl tracking-tight mb-2 italic font-medium">Bidang keahlian</h2>
+  <p class="text-muted mb-10">Peta singkat teknik dan tools yang saya gunakan.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+    {% for cat in site.data.skills.categories %}
+    <div>
+      <h3 class="font-display text-lg italic mb-4 pb-2 border-b border-rule">{{ cat.name_id }}</h3>
+      <ul class="space-y-3">
+        {% for skill in cat.skills %}
+        <li>
+          <div class="flex justify-between text-sm mb-1">
+            <span>{{ skill.name }}</span>
+            <span class="text-xs text-muted font-mono numeral">{{ skill.level }}%</span>
+          </div>
+          <div class="h-1 bg-paper-200 dark:bg-night-soft rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-ocean-700 to-forest-700 rounded-full" style="width: {{ skill.level }}%"></div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<hr class="tufte-rule">
+
+<section class="reveal">
+  <h2 class="font-display text-3xl tracking-tight mb-2 italic font-medium">Pengalaman</h2>
+  <p class="text-muted mb-10">Sejumlah penugasan profesional dan riset terpilih.</p>
+
+  <div class="relative pl-8">
+    <div class="absolute left-2 top-0 bottom-0 w-px bg-rule"></div>
+    {% for item in site.data.experience.experience %}
+    <div class="relative mb-10 last:mb-0">
+      <div class="absolute -left-7 top-2 w-3 h-3 rounded-full bg-paper border-2 border-ocean-700"></div>
+      <div class="flex flex-wrap items-baseline gap-x-3 mb-1">
+        <h3 class="font-display text-lg">{{ item.role_id }}</h3>
+        <span class="text-xs font-mono numeral text-muted">{{ item.period }}</span>
+      </div>
+      <p class="text-sm italic text-muted mb-2">{{ item.organization }}{% if item.location %} · {{ item.location }}{% endif %}</p>
+      <div class="text-sm text-ink/85 dark:text-paper/85 leading-relaxed max-w-prose-wide">
+        {{ item.description_id | markdownify }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<hr class="tufte-rule">
+
+<section class="reveal">
+  <h2 class="font-display text-3xl tracking-tight mb-2 italic font-medium">Pendidikan</h2>
+  <p class="text-muted mb-10">Pelatihan akademik formal.</p>
+
+  <div class="space-y-6">
+    {% for item in site.data.experience.education %}
+    <div class="grid grid-cols-12 gap-4 pb-6 border-b border-rule last:border-b-0">
+      <div class="col-span-12 md:col-span-3">
+        <span class="text-xs font-mono numeral text-muted uppercase tracking-widest">{{ item.period }}</span>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h3 class="font-display text-lg mb-1">{{ item.degree_id }}</h3>
+        <p class="text-sm italic text-muted mb-1">{{ item.institution }}</p>
+        {% if item.thesis_id %}
+        <p class="text-sm">{{ item.thesis_id }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

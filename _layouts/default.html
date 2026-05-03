@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.default_lang }}" class="scroll-smooth">
+{%- include head.html -%}
+<body class="bg-paper text-ink antialiased font-body selection:bg-ocean-200/60">
+
+  {%- include header.html -%}
+
+  <main id="content" class="min-h-[70vh]">
+    {{ content }}
+  </main>
+
+  {%- include footer.html -%}
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+
+  {%- if site.analytics.google != "" -%}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.analytics.google }}');
+    </script>
+  {%- endif -%}
+
+  {%- if site.analytics.plausible != "" -%}
+    <script defer data-domain="{{ site.analytics.plausible }}" src="https://plausible.io/js/script.js"></script>
+  {%- endif -%}
+
+</body>
+</html>

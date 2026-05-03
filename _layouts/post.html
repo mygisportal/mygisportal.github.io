@@ -1,0 +1,117 @@
+---
+layout: default
+---
+
+{%- assign lang = page.lang | default: site.default_lang -%}
+{%- assign t = site.data.i18n[lang] -%}
+
+<article class="max-w-content mx-auto px-6 lg:px-10 py-16 lg:py-20">
+
+  <!-- Back link -->
+  <a href="{% if lang == 'id' %}/id{% endif %}/blog/" class="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-muted hover:text-ocean-700 dark:hover:text-ocean-300 mb-8 transition">
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    {{ t.label_back }}
+  </a>
+
+  <!-- Header -->
+  <header class="max-w-prose-wide mb-10 reveal">
+    {%- if page.categories -%}
+    <div class="flex flex-wrap gap-1.5 mb-5">
+      {%- for cat in page.categories -%}
+        <span class="tag-pill is-ocean">{{ cat }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+
+    <h1 class="font-display text-4xl md:text-5xl tracking-tight leading-[1.1] mb-5">{{ page.title }}</h1>
+
+    {%- if page.excerpt and page.show_excerpt != false -%}
+    <p class="text-xl text-muted italic font-display leading-relaxed">{{ page.excerpt | strip_html | strip_newlines | truncate: 220 }}</p>
+    {%- endif -%}
+
+    <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-mono uppercase tracking-widest text-muted">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+      {%- if page.reading_time -%}
+        <span>· {{ page.reading_time }} {{ t.label_min_read }}</span>
+      {%- else -%}
+        {%- assign words = content | number_of_words -%}
+        {%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+        <span>· {{ minutes }} {{ t.label_min_read }}</span>
+      {%- endif -%}
+      {%- if page.author -%}
+        <span>· {{ page.author }}</span>
+      {%- endif -%}
+    </div>
+  </header>
+
+  <hr class="tufte-rule">
+
+  <!-- Body -->
+  <div class="reveal">
+    {%- if page.image -%}
+    <figure class="mb-10 max-w-prose-wide">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" class="w-full rounded">
+      {%- if page.image_caption -%}
+      <figcaption class="text-xs text-muted text-center mt-2 italic">{{ page.image_caption }}</figcaption>
+      {%- endif -%}
+    </figure>
+    {%- endif -%}
+
+    <div class="prose-tufte">
+      {{ content }}
+    </div>
+  </div>
+
+  <hr class="tufte-rule">
+
+  <!-- Tags -->
+  {%- if page.tags and page.tags.size > 0 -%}
+  <div class="max-w-prose mb-10">
+    <p class="text-xs uppercase tracking-widest text-muted mb-2">{{ t.label_tags }}</p>
+    <div class="flex flex-wrap gap-1.5">
+      {%- for tag in page.tags -%}
+        <span class="tag-pill">#{{ tag }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- endif -%}
+
+  <!-- Author card -->
+  <aside class="max-w-prose-wide flex items-start gap-4 p-5 border border-rule rounded">
+    <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.full_name }}" class="w-14 h-14 rounded-full object-cover bg-paper-200" onerror="this.style.display='none'">
+    <div>
+      <p class="font-display text-lg">{{ site.author.full_name }}</p>
+      <p class="text-sm text-muted italic mt-0.5">{% if lang == 'id' %}{{ site.author.title_id }}{% else %}{{ site.author.title_en }}{% endif %}</p>
+      <p class="text-sm mt-2 max-w-prose">
+        {%- if lang == 'id' -%}
+        Tulisan singkat seputar GIS, penginderaan jauh, dan ketahanan bencana. Untuk diskusi atau kolaborasi, silakan hubungi via email.
+        {%- else -%}
+        Short notes on GIS, remote sensing, and disaster resilience. For discussion or collaboration, get in touch via email.
+        {%- endif -%}
+      </p>
+    </div>
+  </aside>
+
+  <!-- Comments (Giscus) -->
+  {%- if site.giscus.enabled and page.comments != false -%}
+  <section class="max-w-prose-wide mt-12">
+    <h2 class="font-display text-2xl mb-4 italic font-medium">Discussion</h2>
+    <script src="https://giscus.app/client.js"
+            data-repo="{{ site.giscus.repo }}"
+            data-repo-id="{{ site.giscus.repo_id }}"
+            data-category="{{ site.giscus.category }}"
+            data-category-id="{{ site.giscus.category_id }}"
+            data-mapping="{{ site.giscus.mapping }}"
+            data-strict="0"
+            data-reactions-enabled="{{ site.giscus.reactions_enabled }}"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="{{ site.giscus.theme }}"
+            data-lang="{{ lang }}"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async></script>
+  </section>
+  {%- endif -%}
+
+</article>
