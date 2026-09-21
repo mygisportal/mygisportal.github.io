@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview — Satria Indratmoko</title>
+    <meta name="description" content="Design preview only. See README.md for the real Vite build/deploy flow." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/styles/global.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.3.1",
+          "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+          "react-dom": "https://esm.sh/react-dom@18.3.1",
+          "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+          "react-router-dom": "https://esm.sh/react-router-dom@6.26.2?deps=react@18.3.1,react-dom@18.3.1"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div style="background:#fef3cd;color:#664d03;font-family:sans-serif;font-size:13px;padding:8px 16px;text-align:center;">
+      Browser-only design preview (Babel + CDN React) — the real deployable app is the Vite project in this repo. See README.md.
+    </div>
+    <div id="root"></div>
+    <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+    <script type="module">
+      const cache = new Map();
+
+      async function resolve(path) {
+        if (cache.has(path)) return cache.get(path);
+        if (path.endsWith(".css")) {
+          const url = URL.createObjectURL(new Blob([""], { type: "text/javascript" }));
+          cache.set(path, url);
+          return url;
+        }
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("Failed to fetch " + path + " (" + res.status + ")");
+        let src = await res.text();
+
+        const importRe = /(?:from|import)\s+["'](\.[^"']+)["']/g;
+        const rels = new Set();
+        let m;
+        while ((m = importRe.exec(src))) rels.add(m[1]);
+
+        const base = new URL(path, location.href);
+        for (const rel of rels) {
+          const resolvedPath = new URL(rel, base).pathname;
+          const blobUrl = await resolve(resolvedPath);
+          src = src.split('"' + rel + '"').join('"' + blobUrl + '"');
+          src = src.split("'" + rel + "'").join("'" + blobUrl + "'");
+        }
+
+        const { code } = Babel.transform(src, { presets: ["react"], filename: path, sourceType: "module" });
+        const url = URL.createObjectURL(new Blob([code], { type: "text/javascript" }));
+        cache.set(path, url);
+        return url;
+      }
+
+      resolve(new URL("./src/main.jsx", location.href).pathname)
+        .then((url) => import(url))
+        .then(() => {
+          // Preview-only shim: this static preview has no Vite dev server, so
+          // it can't serve /public at the site root like the real app does.
+          // Rewrite absolute /images and /documents references to the local
+          // public/ folder purely for this preview's sake.
+          const fix = (el, attr) => {
+            const v = el.getAttribute(attr);
+            if (v && (v.startsWith("/images/") || v.startsWith("/documents/"))) {
+              el.setAttribute(attr, "public" + v);
+            }
+          };
+          const patch = () => {
+            document.querySelectorAll("img[src]").forEach((el) => fix(el, "src"));
+            document.querySelectorAll("a[href]").forEach((el) => fix(el, "href"));
+          };
+          patch();
+          new MutationObserver(patch).observe(document.getElementById("root"), {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["src", "href"],
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+          document.getElementById("root").innerHTML =
+            '<pre style="padding:24px;color:#b00;white-space:pre-wrap;">' + err.message + "</pre>";
+        });
+    </script>
+  </body>
+</html>
